@@ -1,4 +1,4 @@
-package com.zyyApp.util;
+package com.zyyApp.util.simple;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
