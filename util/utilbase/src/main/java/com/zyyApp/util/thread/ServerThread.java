@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * 游戏服务器主线程
+ * 服务线程工具;
+ * 在一个单独的线程, 顺序执行一系列加入的指令
+ * 可以用于服务器消息处理;
  */
 public class ServerThread extends Thread {
 	// 日志
@@ -35,7 +37,6 @@ public class ServerThread extends Thread {
 	}
 
 	public void run() {
-
 		stop = false;
 		int loop = 0;
 		while (!stop) {
@@ -59,8 +60,7 @@ public class ServerThread extends Thread {
 
 					long end = System.currentTimeMillis();
 					if (end - start > 10)
-						handlerlog.info(
-								this.getName() + "-->" + command.getClass().getSimpleName() + " run:" + (end - start));
+						handlerlog.info(this.getName() + "-->" + command.getClass().getSimpleName() + " run:" + (end - start));
 					if (loop % 1000 == 0) {
 						if (loop > 200000000)
 							loop = 0;
