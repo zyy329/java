@@ -1,5 +1,6 @@
 package com.zyyApp.util.thread;
 
+import com.zyyApp.util.thread.cmd.ICommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +37,7 @@ public class ServerThread extends Thread {
 		});
 	}
 
+	@Override
 	public void run() {
 		stop = false;
 		int loop = 0;

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.zyyApp.util</groupId>
-  <artifactId>util-base</artifactId>
+  <artifactId>utilbase</artifactId>
   <version>1.00002</version>
   <packaging>jar</packaging>
 
@@ -35,6 +35,13 @@
       <groupId>com.lmax</groupId>
       <artifactId>disruptor</artifactId>
       <version>3.4.2</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.12</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 

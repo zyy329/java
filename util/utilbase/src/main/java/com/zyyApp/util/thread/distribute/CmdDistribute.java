@@ -4,16 +4,15 @@ import com.lmax.disruptor.BlockingWaitStrategy;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
-import com.zyyApp.util.thread.ICommand;
+import com.zyyApp.util.thread.NameThreadFactory;
+import com.zyyApp.util.thread.cmd.ICommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.Executors;
-
 /**
- * 多线程 指令分发器;
- * 确保相同 处理类型ID(proId) 的事件, 始终会在相同的处理线程中进行处理;
- * 内部使用 Disruptor 作为多线程分发器;
+ * 多线程 指令转发器;
+ * 内部使用 Disruptor 作为多线程指令转发;
+ * 多生产者 模式
  * @author zyy
  * @date 2019-3-22
  */
@@ -26,28 +25,35 @@ public class CmdDistribute {
     private CmdEvtProducer producer = null;
 
     /** 构造初始化 */
-    public CmdDistribute(int buffSize, int procThreadNum) {
-        if (procThreadNum <= 0) {
-            log.error("初始化参数错误; procThreadNum:{}", procThreadNum);
-            return;
+    public CmdDistribute(int buffSize, String threadNameBase, int csmNum) {
+        if (buffSize <= 0 || csmNum <= 0) {
+            throw new RuntimeException("CmdDistribute init param Error!!");
         }
 
         // 创建分发器;
         disruptor = new Disruptor<CmdEvent>(
                 new CmdEvtFactory()
                 , buffSize
-                , Executors.defaultThreadFactory()
+                , new NameThreadFactory(threadNameBase)
                 , ProducerType.MULTI            // 多生产者模式;
                 ,new BlockingWaitStrategy()     // 消费者等待策略: 阻塞等待;
         );
 
-        // 事件处理器绑定; (多个消费者重复消费;)
-        for (int i = 0; i < procThreadNum; i++) {
-            disruptor.handleEventsWith(new CmdEventHandler(i));
+
+        if (csmNum == 1) {
+            // 事件处理器绑定; (单个消费者;)
+            disruptor.handleEventsWith(new CmdEventHandler());
+        } else {
+            // 事件处理器绑定; (多个消费者 不 重复消费;)
+            CmdWorkHandler[] consumers = new CmdWorkHandler[csmNum];
+            for (int i = 0; i < consumers.length; i++) {
+                consumers[i] = new CmdWorkHandler();
+            }
+            disruptor.handleEventsWithWorkerPool(consumers);
         }
 
         // 生产者类;
-        producer = new CmdEvtProducer(procThreadNum);
+        producer = new CmdEvtProducer();
     }
 
     /**
@@ -66,11 +72,9 @@ public class CmdDistribute {
 
     /**
      * 添加指令(允许多线程添加)
-     * @param proId,    事件 处理类型ID, 用于确保相同 类型ID 的事件, 始终会在相同的处理线程中进行处理;
-     *                  < 0 时, 会自动顺序生成一个;
      * @param command,  待处理指令对象;
      */
-    public void addCommand(int proId, ICommand command) {
-        producer.onData(proId, command);
+    public void addCommand(ICommand command) {
+        producer.onData(command);
     }
 }
