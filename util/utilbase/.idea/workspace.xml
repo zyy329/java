@@ -44,7 +44,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/zyyApp/util/leetcode" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -59,6 +59,9 @@
       <recent name="com.zyyApp.util.thread" />
       <recent name="com.zyyApp.util" />
       <recent name="com.zyyApp" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Coder\github\java\util\utilbase\src\main\java\com\zyyApp\util\leetcode" />
     </key>
   </component>
   <component name="RunManager" selected="Application.CmdTest">
