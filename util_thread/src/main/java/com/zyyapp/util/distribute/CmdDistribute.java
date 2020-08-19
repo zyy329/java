@@ -1,11 +1,11 @@
-package com.zyyApp.util.thread.distribute;
+package com.zyyapp.util.distribute;
 
 import com.lmax.disruptor.BlockingWaitStrategy;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
-import com.zyyApp.util.thread.NameThreadFactory;
-import com.zyyApp.util.thread.cmd.ICommand;
+import com.zyyapp.util.cmd.ICommand;
+import com.zyyapp.util.thread.NameThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

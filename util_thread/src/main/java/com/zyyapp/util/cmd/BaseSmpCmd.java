@@ -1,4 +1,4 @@
-package com.zyyApp.util.thread.cmd;
+package com.zyyapp.util.cmd;
 
 /**
  * 简单普通处理指令 基类;

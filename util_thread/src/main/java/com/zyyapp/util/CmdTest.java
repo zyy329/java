@@ -1,12 +1,14 @@
-package com.zyyApp.util.thread;
+package com.zyyapp.util;
 
-import com.zyyApp.util.thread.cmd.BaseSmpCmd;
-import com.zyyApp.util.thread.distribute.CmdDistMgr;
+import com.zyyapp.util.cmd.BaseSmpCmd;
+import com.zyyapp.util.distribute.CmdDistMgr;
+import com.zyyapp.util.thread.CmdThread;
+import com.zyyapp.util.thread.ServerThread;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * ServerThread 和 CmdDistMgr 性能比较测试;
+ * ServerThread, CmdThread, CmdDistMgr 性能比较测试;
  * @author zyy
  * @date 2020-8-13
  */
@@ -14,8 +16,10 @@ public class CmdTest {
     private static final int POOL_SIZE = 10;
     private static final int TEST_NUM = 100_0000;
 
-    private static CmdDistMgr distMgr = new CmdDistMgr(POOL_SIZE, 128, "CmdDist");
     private static ServerThread[] stLst = new ServerThread[POOL_SIZE];
+    private static CmdThread[] cmdTLst = new CmdThread[POOL_SIZE];
+    private static CmdDistMgr distMgr = new CmdDistMgr(POOL_SIZE, 128, "CmdDist");
+
     private static long testBeg = 0;
     private static AtomicInteger atoI = new AtomicInteger(0);
 
@@ -39,15 +43,25 @@ public class CmdTest {
     }
 
     public static void main(String[] args) {
-        // 线程组;
         ThreadGroup group = new ThreadGroup("ThreadGroup");
+
+        // 老式 分发线程组;
         for (int i = 0; i < stLst.length; i++) {
-            String threadName = "PlayerThread" + i;
+            String threadName = "OldThread" + i;
             stLst[i] = new ServerThread(group, threadName);
 
             stLst[i].start();
         }
 
+        // 指令 分发线程组;
+        for (int i = 0; i < cmdTLst.length; i++) {
+            String threadName = "CmdThread" + i;
+            cmdTLst[i] = new CmdThread(group, threadName);
+
+            cmdTLst[i].start();
+        }
+
+        // Disruptor 分发器;
         distMgr.start();
 
         // 测试数据;
@@ -71,9 +85,14 @@ public class CmdTest {
 //                        int idx = cmd.val % stLst.length ;
 //                        stLst[idx].addCommand(cmd);
 
+//                        // cmdTLst
+                        // 测试结果(ms): 5133, 5603, 5527, 5449, 5802
+                        int idx = cmd.val % cmdTLst.length ;
+                        cmdTLst[idx].addCommand(cmd);
+
                         // CmdDistMgr
                         // 测试结果(ms): 4591, 4705, 4902, 4783, 4831
-                        distMgr.addCommand(cmd.val, cmd);
+//                        distMgr.addCommand(cmd.val, cmd);
                     }
                 }
             });

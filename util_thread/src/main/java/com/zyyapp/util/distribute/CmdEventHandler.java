@@ -1,4 +1,4 @@
-package com.zyyApp.util.thread.distribute;
+package com.zyyapp.util.distribute;
 
 import com.lmax.disruptor.EventHandler;
 

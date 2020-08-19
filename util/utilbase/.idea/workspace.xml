@@ -74,7 +74,7 @@
       <method />
     </configuration>
     <configuration name="CmdTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.zyyApp.util.thread.CmdTest" />
+      <option name="MAIN_CLASS_NAME" value="com.zyyapp.util.thread.CmdTest" />
       <module name="utilbase" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method v="2">
@@ -207,21 +207,25 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="294" key="FileChooserDialogImpl/0.0.1920.1080/1982.0.1858.1080@0.0.1920.1080" timestamp="1597806559685" />
-    <state width="1814" height="347" key="GridCell.Tab.0.bottom" timestamp="1597315745002">
-      <screen x="1982" y="0" width="1858" height="1080" />
+    <state width="1876" height="280" key="GridCell.Tab.0.bottom" timestamp="1597809535801">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state width="1876" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1080/1982.0.1858.1080@0.0.1920.1080" timestamp="1597809535801" />
     <state width="1814" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1080/1982.0.1858.1080@1982.0.1858.1080" timestamp="1597315745002" />
-    <state width="1814" height="347" key="GridCell.Tab.0.center" timestamp="1597315745001">
-      <screen x="1982" y="0" width="1858" height="1080" />
+    <state width="1876" height="280" key="GridCell.Tab.0.center" timestamp="1597809535801">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state width="1876" height="280" key="GridCell.Tab.0.center/0.0.1920.1080/1982.0.1858.1080@0.0.1920.1080" timestamp="1597809535801" />
     <state width="1814" height="347" key="GridCell.Tab.0.center/0.0.1920.1080/1982.0.1858.1080@1982.0.1858.1080" timestamp="1597315745001" />
-    <state width="1814" height="347" key="GridCell.Tab.0.left" timestamp="1597315745001">
-      <screen x="1982" y="0" width="1858" height="1080" />
+    <state width="1876" height="280" key="GridCell.Tab.0.left" timestamp="1597809535801">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state width="1876" height="280" key="GridCell.Tab.0.left/0.0.1920.1080/1982.0.1858.1080@0.0.1920.1080" timestamp="1597809535801" />
     <state width="1814" height="347" key="GridCell.Tab.0.left/0.0.1920.1080/1982.0.1858.1080@1982.0.1858.1080" timestamp="1597315745001" />
-    <state width="1814" height="347" key="GridCell.Tab.0.right" timestamp="1597315745002">
-      <screen x="1982" y="0" width="1858" height="1080" />
+    <state width="1876" height="280" key="GridCell.Tab.0.right" timestamp="1597809535801">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state width="1876" height="280" key="GridCell.Tab.0.right/0.0.1920.1080/1982.0.1858.1080@0.0.1920.1080" timestamp="1597809535801" />
     <state width="1814" height="347" key="GridCell.Tab.0.right/0.0.1920.1080/1982.0.1858.1080@1982.0.1858.1080" timestamp="1597315745002" />
     <state width="1814" height="347" key="GridCell.Tab.1.bottom" timestamp="1597315461868">
       <screen x="1982" y="0" width="1858" height="1080" />

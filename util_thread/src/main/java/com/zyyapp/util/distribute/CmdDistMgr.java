@@ -1,6 +1,6 @@
-package com.zyyApp.util.thread.distribute;
+package com.zyyapp.util.distribute;
 
-import com.zyyApp.util.thread.cmd.ICommand;
+import com.zyyapp.util.cmd.ICommand;
 
 /**
  * 多线程 指令分发 管理器

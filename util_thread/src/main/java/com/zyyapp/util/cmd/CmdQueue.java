@@ -1,6 +1,6 @@
-package com.zyyApp.util.thread.cmd;
+package com.zyyapp.util.cmd;
 
-import com.zyyApp.util.UtilBaseLog;
+import com.zyyapp.util.UtilLog;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
@@ -50,16 +50,16 @@ public class CmdQueue {
             long end = System.currentTimeMillis();
 
             if (end - start > command.warnTime()) {
-                UtilBaseLog.handler.info("{};超长处理时间指令: {} -- {}", log(), command.getClass(), end - start);
+                UtilLog.handler.info("{};超长处理时间指令: {} -- {}", log(), command.getClass(), end - start);
             }
             if (loop % 1000 == 0) {
                 if (loop > 200000000) {
                     loop = 0;
                 }
-                UtilBaseLog.handler.info("{}; 指令处理监控: [剩余: {}], [已执行: {}]", log(), cmdQueue.size(), loop);
+                UtilLog.handler.info("{}; 指令处理监控: [剩余: {}], [已执行: {}]", log(), cmdQueue.size(), loop);
             }
         } catch (Exception e) {
-            UtilBaseLog.excLog.error("{}", log(), e);
+            UtilLog.excLog.error("{}", log(), e);
         } finally {
             if (command != null) {
                 command.release();
@@ -85,7 +85,7 @@ public class CmdQueue {
             //增加指令, 已满会阻塞;
             cmdQueue.put(command);
         } catch (Exception e) {
-            UtilBaseLog.excLog.error("{}", log(), e);
+            UtilLog.excLog.error("{}", log(), e);
         }
     }
 

@@ -1,7 +1,7 @@
-package com.zyyApp.util.thread.distribute;
+package com.zyyapp.util.distribute;
 
 import com.lmax.disruptor.RingBuffer;
-import com.zyyApp.util.thread.cmd.ICommand;
+import com.zyyapp.util.cmd.ICommand;
 
 /**
  * 消息生产者类

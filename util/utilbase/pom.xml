@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.zyyApp.util</groupId>
+  <groupId>com.zyyapp.util</groupId>
   <artifactId>utilbase</artifactId>
   <version>1.00002</version>
   <packaging>jar</packaging>
@@ -29,19 +29,6 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>1.7.25</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
-    <dependency>
-      <groupId>com.lmax</groupId>
-      <artifactId>disruptor</artifactId>
-      <version>3.4.2</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.12</version>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
 

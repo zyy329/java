@@ -1,6 +1,8 @@
-package com.zyyApp.util.thread.cmd;
+package com.zyyapp.util.thread;
 
-import com.zyyApp.util.UtilBaseLog;
+import com.zyyapp.util.UtilLog;
+import com.zyyapp.util.cmd.CmdQueue;
+import com.zyyapp.util.cmd.ICommand;
 
 /**
  * 通用 指令 处理线程;
@@ -30,7 +32,7 @@ public class CmdThread extends Thread {
 		this.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
 			@Override
 			public void uncaughtException(Thread t, Throwable e) {
-				UtilBaseLog.excLog.error("threadName:{} UncaughtExceptionHandler:", threadName, e);
+				UtilLog.excLog.error("threadName:{} UncaughtExceptionHandler:", threadName, e);
 				stopThread(true);
 			}
 		});
@@ -45,7 +47,7 @@ public class CmdThread extends Thread {
 	}
 
 	public void stopThread(boolean flag) {
-	 	UtilBaseLog.nm.info("服务器线程{} 停止。", threadName);
+	 	UtilLog.nm.info("服务器线程{} 停止。", threadName);
 		stop = flag;
 		queue.clear();
 	}
@@ -63,7 +65,7 @@ public class CmdThread extends Thread {
 		try {
 			queue.addCommand(command);
 		} catch (Exception e) {
-			UtilBaseLog.excLog.error("ThreadName:{}", threadName, e);
+			UtilLog.excLog.error("ThreadName:{}", threadName, e);
 		}
 	}
 

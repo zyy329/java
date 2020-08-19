@@ -1,4 +1,4 @@
-package com.zyyApp.util.thread.cmd;
+package com.zyyapp.util.cmd;
 
 import com.zyyApp.util.simple.ReUseBase;
 

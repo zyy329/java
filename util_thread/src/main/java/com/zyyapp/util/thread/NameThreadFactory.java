@@ -1,4 +1,4 @@
-package com.zyyApp.util.thread;
+package com.zyyapp.util.thread;
 
 import lombok.AllArgsConstructor;
 
@@ -6,16 +6,19 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * 自定义线程工厂
+ * 主要提供对线程名的设定
  * @author zyy
- * @date 2020-8-13
+ * @date 2019-5-13
  */
 @AllArgsConstructor
-public class CmdThreadFactory implements ThreadFactory {
+public class NameThreadFactory implements ThreadFactory {
     private static AtomicInteger idx = new AtomicInteger();
     private String nameBase;
 
     @Override
     public Thread newThread(Runnable r) {
-        return null;
+        String name = String.format("%s_%d", nameBase, idx.getAndIncrement());
+        return new Thread(r, name);
     }
 }

@@ -1,6 +1,6 @@
-package com.zyyApp.util.thread;
+package com.zyyapp.util.thread;
 
-import com.zyyApp.util.thread.cmd.ICommand;
+import com.zyyapp.util.cmd.ICommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
