@@ -1,4 +1,4 @@
-package com.zyyApp.util.leetcode;
+package com.zyyapp.util.leetcode.tree;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -6,26 +6,78 @@ import com.alibaba.fastjson.JSONArray;
 import java.util.*;
 
 /**
- * 力扣 二叉树 测试用例生成工具
- * 包含二叉树 节点结构
- * 树型信息打印, 随机生成, 字符串格式解析;
+ * 二叉树 工具
+ * 随机测试用例生成工具
+ * 根据传入字符串参数, 解析生成二叉树;
+ * 树型信息打印;
  * @author zyy
- * @date 2020-8-5
+ * @date 2020-8-19
  */
-public class TreeNode {
-    public int val;
-    public TreeNode left;
-    public TreeNode right;
+public class UtilTreeNode {
+    /** 测试数据随机生成器 */
+    public static String genTestTree() {
+        Random r = new Random();
 
-    TreeNode(int val) { this.val = val; }
+        int size = r.nextInt(20);
+        if (size == 0) {
+            return "[]";
+        }
+        Integer[] arr = new Integer[size];
+        for (int i = 0; i < size; i++) {
+            if (Math.random() < 0.2) {
+                // empty
+                arr[i] = null;
+                continue;
+            }
+            arr[i] = r.nextInt(100);
+        }
 
-    @Override
-    public String toString() {
-        return Integer.toString(val);
+        return JSON.toJSONString(arr);
+    }
+
+    /** 根据传入字符串, 建立 Tree */
+    public static TreeNode buildTree(String param) {
+        JSONArray arr = JSON.parseArray(param);
+
+        // 前置判断;
+        Object frist;
+        if (arr.isEmpty() || (frist = arr.get(0)) == null) {
+            return new TreeNode(0);
+        }
+
+        TreeNode root = new TreeNode((int)frist);
+
+        // 树型构建辅助队列;
+        Queue<TreeNode> nodeQueue = new LinkedList<>();
+        nodeQueue.offer(root);
+
+        // 构建树;
+        TreeNode curPar;
+        int arrIdx = 1;
+        while ((curPar = nodeQueue.poll()) != null) {
+            try {
+                Object left = arr.get(arrIdx);
+                if (left != null) {
+                    curPar.left = new TreeNode((int)left);
+                    nodeQueue.offer(curPar.left);
+                }
+                Object right = arr.get(arrIdx+1);
+                if (right != null) {
+                    curPar.right = new TreeNode((int)right);
+                    nodeQueue.offer(curPar.right);
+                }
+                arrIdx += 2;
+            } catch (IndexOutOfBoundsException e) {
+                // 已经处理完所有传入数据;
+                break;
+            }
+        }
+
+        return root;
     }
 
     /** 可视化输出 树 */
-    public void printTree() {
+    public static void printTree(TreeNode root) {
         List<List<Integer>> arr = new ArrayList<>();
         Queue<TreeNode> curQue = new LinkedList<>();
         Queue<TreeNode> nextQue = new LinkedList<>();
@@ -33,8 +85,9 @@ public class TreeNode {
         TreeNode node;
         // 当前层非null节点数量;
         int validNum = 1;
-        curQue.offer(this);
+        curQue.offer(root);
 
+        // 广度遍历, 一层一层的构建节点队列;
         while (validNum > 0) {
             // 清空, 以便统计下一层的有效数量;
             validNum = 0;
@@ -110,67 +163,5 @@ public class TreeNode {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    /** 根据传入字符串, 建立 Tree */
-    public static TreeNode buildTree(String param) {
-        JSONArray arr = JSON.parseArray(param);
-
-        Object frist;
-        if (arr.isEmpty() || (frist = arr.get(0)) == null) {
-            // 为空;
-            return new TreeNode(0);
-        }
-
-        TreeNode root = new TreeNode((int)frist);
-
-        // 树型构建辅助队列;
-        Queue<TreeNode> nodeQueue = new LinkedList<>();
-        nodeQueue.offer(root);
-
-        // 构建树;
-        TreeNode curPar;
-        int arrIdx = 1;
-        while ((curPar = nodeQueue.poll()) != null) {
-            try {
-                Object left = arr.get(arrIdx);
-                if (left != null) {
-                    curPar.left = new TreeNode((int)left);
-                    nodeQueue.offer(curPar.left);
-                }
-                Object right = arr.get(arrIdx+1);
-                if (right != null) {
-                    curPar.right = new TreeNode((int)right);
-                    nodeQueue.offer(curPar.right);
-                }
-                arrIdx += 2;
-            } catch (IndexOutOfBoundsException e) {
-                // 已经处理完所有传入数据;
-                break;
-            }
-        }
-
-        return root;
-    }
-
-    /** 测试数据随机生成器 */
-    public static String genTestTree() {
-        Random r = new Random();
-
-        int size = r.nextInt(20);
-        if (size == 0) {
-            return "[]";
-        }
-        Integer[] arr = new Integer[size];
-        for (int i = 0; i < size; i++) {
-            if (Math.random() < 0.2) {
-                // empty
-                arr[i] = null;
-                continue;
-            }
-            arr[i] = r.nextInt(100);
-        }
-
-        return JSON.toJSONString(arr);
     }
 }

@@ -203,6 +203,10 @@
       <screen x="1982" y="0" width="1858" height="1080" />
     </state>
     <state x="2574" y="196" key="#CmdTest/0.0.1920.1080/1982.0.1858.1080@1982.0.1858.1080" timestamp="1597315744716" />
+    <state x="739" y="294" key="FileChooserDialogImpl" timestamp="1597806559685">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="739" y="294" key="FileChooserDialogImpl/0.0.1920.1080/1982.0.1858.1080@0.0.1920.1080" timestamp="1597806559685" />
     <state width="1814" height="347" key="GridCell.Tab.0.bottom" timestamp="1597315745002">
       <screen x="1982" y="0" width="1858" height="1080" />
     </state>
@@ -239,6 +243,10 @@
       <screen x="1982" y="0" width="1858" height="1080" />
     </state>
     <state x="2391" y="113" key="SettingsEditor/0.0.1920.1080/1982.0.1858.1080@1982.0.1858.1080" timestamp="1597315562821" />
+    <state x="2404" y="318" key="new project wizard" timestamp="1597806667418">
+      <screen x="1982" y="0" width="1858" height="1080" />
+    </state>
+    <state x="2404" y="318" key="new project wizard/0.0.1920.1080/1982.0.1858.1080@0.0.1920.1080" timestamp="1597806667418" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
