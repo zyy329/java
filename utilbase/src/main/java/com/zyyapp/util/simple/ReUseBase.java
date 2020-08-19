@@ -1,4 +1,4 @@
-package com.zyyApp.util.simple;
+package com.zyyapp.util.simple;
 
 /**
  * Created by zyy on 2018-8-27.

@@ -1,4 +1,4 @@
-package com.zyyApp.util.simple;
+package com.zyyapp.util.simple;
 
 /**
  * 公共定义;

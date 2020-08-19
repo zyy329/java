@@ -1,6 +1,6 @@
 package com.zyyapp.util.cmd;
 
-import com.zyyApp.util.simple.ReUseBase;
+import com.zyyapp.util.simple.ReUseBase;
 
 /**
  * 普通处理指令 基类;
