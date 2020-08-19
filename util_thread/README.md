@@ -1,7 +1,7 @@
 # util thread
     线程 相关工具包
 
-## 内容列表
+## 包中内容
     cmd 包, 消息指令相关工具;
     distribute 包, 对 distribute 进行简单包装后使用的 cmd 分发消息队列;
     thread 包, 自己实现的一些线程工具;
@@ -12,4 +12,4 @@
     直接 import 该包, 即可使用;
     
 ## 维护者
-    [@zyy329](https://github.com/zyy329)。
+[zyy329](https://github.com/zyy329)
